@@ -19,7 +19,11 @@ case "$1" in
             fi
         fi
 	
+	echo "Removing user ${SERVICE_NAME}"
 	userdel -r ${SERVICE_NAME}
+	
+	echo "Uninstalling ${SERVICE_NAME}:"
+	pip uninstall flexget --yes
 	
 	if [ -d "/home/${SERVICE_NAME}/.${SERVICE_NAME}" ]; then
             echo "Removing /home/${SERVICE_NAME}/.${SERVICE_NAME}"
@@ -36,10 +40,6 @@ case "$1" in
 	    rm /etc/default/${SERVICE_NAME}
 	fi
 
-        if [ -f "/var/log/${SERVICE_NAME}.log" ]; then
-	    echo "Removing /var/log/${SERVICE_NAME}.log"
-            rm /var/log/${SERVICE_NAME}.log
-	fi
     ;;
     remove)
     ;;
