@@ -32,7 +32,10 @@ case "$1" in
 	else
             echo "${SERVICE_NAME} user already exists."
         fi
-
+	
+	echo "Installing ${SERVICE_NAME}:"
+	pip install flexget
+	
         if [ -e /var/run/${SERVICE_NAME} ]; then
             echo "Cleaning old pid file..."
             rm -Rf /var/run/${SERVICE_NAME}
