@@ -21,9 +21,9 @@ case "$1" in
 	
 	userdel -r ${SERVICE_NAME}
 	
-	if [ -d "/etc/${SERVICE_NAME}" ]; then
-            echo "Removing /etc/${SERVICE_NAME}"
-            rm -rf /etc/${SERVICE_NAME}	
+	if [ -d "/home/${SERVICE_NAME}/.${SERVICE_NAME}" ]; then
+            echo "Removing /home/${SERVICE_NAME}/.${SERVICE_NAME}"
+            rm -rf /home/${SERVICE_NAME}/.${SERVICE_NAME}	
 	fi
 	
 	if [ -f "/etc/init.d/${SERVICE_NAME}" ]; then
