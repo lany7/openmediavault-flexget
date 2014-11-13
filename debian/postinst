@@ -38,10 +38,10 @@ case "$1" in
             rm -Rf /var/run/${SERVICE_NAME}
         fi
 
-	if [ ! -d "/etc/${SERVICE_NAME}" ]; then
-            echo "Creating /etc/${SERVICE_NAME}"
-	    mkdir -p /etc/${SERVICE_NAME}
-	    touch /etc/${SERVICE_NAME}/config.yml
+	if [ ! -d "/home/${SERVICE_NAME}/.${SERVICE_NAME}" ]; then
+            echo "Creating /home/${SERVICE_NAME}/.${SERVICE_NAME}"
+	    mkdir -p /home/${SERVICE_NAME}/.${SERVICE_NAME}
+	    touch /home/${SERVICE_NAME}/.${SERVICE_NAME}/config.yml
 	fi
 	
 	if [ ! -f "/etc/default/${SERVICE_NAME}" ]; then
