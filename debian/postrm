@@ -18,6 +18,7 @@ case "$1" in
                 kill -9 $PID;
             fi
         fi
+<<<<<<< HEAD
 	
 	echo "Removing user ${SERVICE_NAME}"
 	userdel -r ${SERVICE_NAME}
@@ -28,8 +29,16 @@ case "$1" in
 	if [ -d "/home/${SERVICE_NAME}/.${SERVICE_NAME}" ]; then
             echo "Removing /home/${SERVICE_NAME}/.${SERVICE_NAME}"
             rm -rf /home/${SERVICE_NAME}/.${SERVICE_NAME}	
+=======
+
+	userdel -r ${SERVICE_NAME}
+
+	if [ -d "/etc/${SERVICE_NAME}" ]; then
+            echo "Removing /etc/${SERVICE_NAME}"
+            rm -rf /etc/${SERVICE_NAME}	
+>>>>>>> 0acf0611c76a5003d08e1795b998022d58f5eb50
 	fi
-	
+
 	if [ -f "/etc/init.d/${SERVICE_NAME}" ]; then
 	    echo "Removing /etc/init.d/${SERVICE_NAME}"
 	    rm /etc/init.d/${SERVICE_NAME}
@@ -50,5 +59,10 @@ case "$1" in
         exit 1
     ;;
 esac
-#DEBHELPER#
+# Automatically added by dh_installinit
+if [ "$1" = "purge" ] ; then
+	update-rc.d flexget remove >/dev/null
+fi
+# End automatically added section
+
 exit 0

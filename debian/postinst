@@ -46,7 +46,7 @@ case "$1" in
 	    mkdir -p /home/${SERVICE_NAME}/.${SERVICE_NAME}
 	    touch /home/${SERVICE_NAME}/.${SERVICE_NAME}/config.yml
 	fi
-	
+
 	if [ ! -f "/etc/default/${SERVICE_NAME}" ]; then
 	    echo "Creating /etc/default/${SERVICE_NAME}"
   	    cat << EOF > /etc/default/${SERVICE_NAME}
@@ -87,5 +87,11 @@ EOF
         exit 1
     ;;
 esac
-#DEBHELPER#
+# Automatically added by dh_installinit
+if [ -x "/etc/init.d/flexget" ]; then
+	update-rc.d flexget defaults >/dev/null
+	invoke-rc.d flexget start || exit $?
+fi
+# End automatically added section
+
 exit 0
