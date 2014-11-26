@@ -27,7 +27,7 @@ case "$1" in
 
 	if ! getent passwd ${SERVICE_NAME} >/dev/null 2>&1; then
             echo "Adding ${SERVICE_NAME} user..."
-            useradd --create-home --groups users --no-user-group --shell /usr/sbin/nologin ${SERVICE_NAME}
+            useradd --create-home --system --groups users --no-user-group --shell /usr/sbin/nologin ${SERVICE_NAME}
 	    insserv -d ${SERVICE_NAME}
 	else
             echo "${SERVICE_NAME} user already exists."
